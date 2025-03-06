@@ -3,399 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Inscripción - Medellín Club</title>
+    <title>Medellín Club - Registro</title>
     <style>
-        /* Variables de colores */
-        :root {
-            --primary-red: #e61919;
-            --dark-red: #b30000;
-            --light-red: #ff4d4d;
-            --white: #ffffff;
-            --light-gray: #f2f2f2;
-            --dark-gray: #333333;
-        }
-
-        /* Estilos generales */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
-            line-height: 1.6;
+            background-color: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #e2e8f0;
         }
-
+        
         .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-
-        /* Cabecera */
-        .header {
-            background-color: var(--primary-red);
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
+            max-width: 500px;
+            width: 100%;
+            background-color: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
         }
-
-        .logo {
-            width: 100px;
-            height: 100px;
-            background-color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            border: 3px solid var(--white);
-            overflow: hidden;
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0000, #ff3333, #ff6666, #ff0000);
+            z-index: -1;
+            border-radius: 14px;
+            animation: animate 4s linear infinite;
+            background-size: 400%;
         }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-red);
+        
+        @keyframes animate {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 100% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
         }
-
+        
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
         .header h1 {
-            color: var(--white);
             font-size: 28px;
+            color: #fff;
             margin-bottom: 5px;
+            letter-spacing: 1px;
         }
-
+        
         .header p {
-            color: var(--white);
-            font-size: 16px;
-            opacity: 0.9;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
         }
-
-        /* Formulario */
+        
         .form-container {
-            background-color: var(--white);
             padding: 30px;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-
-        .form-section {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .form-section:last-child {
-            border-bottom: none;
-        }
-
-        .section-title {
-            font-size: 18px;
-            color: var(--primary-red);
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid var(--primary-red);
-            display: inline-block;
-        }
-
+        
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
         }
-
+        
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            color: var(--dark-gray);
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            color: #cbd5e1;
         }
-
+        
         .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border 0.3s;
+            padding: 12px 15px;
+            background-color: #334155;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            color: #f8fafc;
+            font-size: 15px;
+            transition: all 0.3s;
         }
-
+        
         .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--primary-red);
+        .form-group select:focus {
             outline: none;
-            box-shadow: 0 0 5px rgba(230, 25, 25, 0.3);
+            border-color: #ff3333;
+            box-shadow: 0 0 0 2px rgba(255, 51, 51, 0.3);
         }
-
+        
         .form-row {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
-
+        
         .form-row .form-group {
             flex: 1;
         }
-
+        
         .checkbox-group {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 10px;
         }
-
+        
         .checkbox-group input {
             width: auto;
             margin-right: 10px;
-            margin-top: 5px;
+            accent-color: #ff3333;
         }
-
-        .required-label::after {
-            content: "*";
-            color: var(--primary-red);
-            margin-left: 4px;
-        }
-
-        .radio-group {
-            margin-bottom: 10px;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        .radio-option input {
-            margin-right: 10px;
-        }
-
-        /* Botones */
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-red);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--dark-red);
-        }
-
-        .btn-secondary {
-            background-color: #ddd;
-            color: var(--dark-gray);
-        }
-
-        .btn-secondary:hover {
-            background-color: #ccc;
-        }
-
-        /* Pie de página */
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #777;
+        
+        .checkbox-group label {
+            margin-bottom: 0;
             font-size: 14px;
+            color: #cbd5e1;
         }
-
-        /* Estilos responsivos */
-        @media (max-width: 768px) {
+        
+        .btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 51, 51, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: #60a5fa;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff3333, #ff6666);
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 500px) {
             .form-row {
                 flex-direction: column;
                 gap: 0;
             }
-            
-            .container {
-                padding: 10px;
-            }
-            
-            .form-container {
-                padding: 20px;
-            }
         }
-
-        /* Detalles adicionales */
-        .helper-text {
-            font-size: 12px;
-            color: #777;
-            margin-top: 5px;
+        
+        .required-label::after {
+            content: "*";
+            color: #ff3333;
+            margin-left: 4px;
         }
-
-        .error-message {
-            color: var(--primary-red);
-            font-size: 14px;
-            margin-top: 5px;
-            display: none;
+        
+        .interests-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
         }
-
-        .has-error input,
-        .has-error select {
-            border-color: var(--primary-red);
+        
+        /* Efectos de campo activo */
+        .form-group input:focus ~ label,
+        .form-group select:focus ~ label {
+            color: #ff3333;
         }
-
-        .has-error .error-message {
-            display: block;
+        
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        div {
-    background-color: #ffffff; /* Azul oscuro */
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-}
-
-/* Contenedor del botón */
-.button-group {
-    display: flex;
-    justify-content: center; /* Centra el botón */
-    margin-top: 20px;
-}
-
-/* Estilos del botón */
-.btn-primary {
-    background: linear-gradient(to right, var(--primary-red), var(--dark-red));
-    color: var(--white);
-    border: none;
-    padding: 12px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-}
-
-/* Efecto hover */
-.btn-primary:hover {
-    background: linear-gradient(to right, var(--dark-red), var(--primary-red));
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(179, 0, 0, 0.5);
-}
-
-
+        
+        .form-container {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">
-                <span class="logo-text">MC</span>
-            </div>
             <h1>MEDELLÍN CLUB</h1>
-            <p>Formulario de Inscripción para Membresía</p>
+            <p>Registro de Membresía</p>
         </div>
-
+        
         <div class="form-container">
             <form id="medellinClubForm">
-                <!-- Sección de Información Personal -->
-                <div class="form-section">
-                    <h2 class="section-title">Información Personal</h2>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName" class="required-label">Nombres</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="lastName" class="required-label">Apellidos</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
+                <h2 class="section-title">Información Personal</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="required-label">Nombres</label>
+                        <input type="text" id="firstName" name="firstName" required>
                     </div>
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="idType" class="required-label">Tipo de Documento</label>
-                            <select id="idType" name="idType" required>
-                                <option value="">Seleccione una opción</option>
-                                <option value="cc">Cédula de Ciudadanía</option>
-                                <option value="ce">Cédula de Extranjería</option>
-                                <option value="passport">Pasaporte</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="idNumber" class="required-label">Número de Documento</label>
-                            <input type="text" id="idNumber" name="idNumber" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="birthDate" class="required-label">Fecha de Nacimiento</label>
-                            <input type="date" id="birthDate" name="birthDate" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="gender" class="required-label">Género</label>
-                            <select id="gender" name="gender" required>
-                                <option value="">Seleccione una opción</option>
-                                <option value="male">Masculino</option>
-                                <option value="female">Femenino</option>
-                                <option value="other">Otro</option>
-                                <option value="prefer-not-to-say">Prefiero no decir</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="lastName" class="required-label">Apellidos</label>
+                        <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
                 
-                <!-- Sección de Contacto -->
-                <div class="form-section">
-                    <h2 class="section-title">Información de Contacto</h2>
-                    
-                    <div class="form-group">
-                        <label for="email" class="required-label">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" required>
+                <div class="form-group">
+                    <label for="email" class="required-label">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="required-label">Teléfono</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <h2 class="section-title">Tipo de Membresía</h2>
+                
+                <div class="form-group">
+                    <label for="membershipType" class="required-label">Seleccione su plan</label>
+                    <select id="membershipType" name="membershipType" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="individual">Individual</option>
+                        <option value="family">Familiar</option>
+                        <option value="corporate">Corporativa</option>
+                        <option value="vip">VIP</option>
+                    </select>
+                </div>
+                
+                <h2 class="section-title">Intereses</h2>
+                
+                <div class="interests-container">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="interestSoccer" name="interests" value="soccer">
+                        <label for="interestSoccer">Fútbol</label>
                     </div>
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone" class="required-label">Teléfono Móvil</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="altPhone">Teléfono Alternativo</label>
-                            <input type="tel" id="altPhone" name="altPhone">
-                        </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="interestSwimming" name="interests" value="swimming">
+                        <label for="interestSwimming">Natación</label>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="address" class="required-label">Dirección</label>
-                        <input type="text" id="address" name="address" required>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="interestGym" name="interests" value="gym">
+                        <label for="interestGym">Gimnasio</label>
                     </div>
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="city" class="required-label">Ciudad</label>
-                            <input type="text" id="city" name="city" value="Medellín" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="neighborhood">Barrio</label>
-                            <input type="text" id="neighborhood" name="neighborhood">
-                        </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="interestEvents" name="interests" value="events">
+                        <label for="interestEvents">Eventos sociales</label>
                     </div>
                 </div>
-<!-- Contenedor del botón -->
-<div class="button-group">
-    <button type="submit" class="btn-primary">Enviar</button>
-</div>
+                
+                <div class="form-group">
+                    <label for="comments">Comentarios adicionales</label>
+                    <input type="text" id="comments" name="comments">
+                </div>
+                
+                <button type="submit" class="btn">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
