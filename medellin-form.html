@@ -254,6 +254,43 @@
         .has-error .error-message {
             display: block;
         }
+
+        div {
+    background-color: #ffffff; /* Azul oscuro */
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Contenedor del botón */
+.button-group {
+    display: flex;
+    justify-content: center; /* Centra el botón */
+    margin-top: 20px;
+}
+
+/* Estilos del botón */
+.btn-primary {
+    background: linear-gradient(to right, var(--primary-red), var(--dark-red));
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+/* Efecto hover */
+.btn-primary:hover {
+    background: linear-gradient(to right, var(--dark-red), var(--primary-red));
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(179, 0, 0, 0.5);
+}
+
+
     </style>
 </head>
 <body>
@@ -358,87 +395,7 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Sección de Membresía -->
-                <div class="form-section">
-                    <h2 class="section-title">Tipo de Membresía</h2>
-                    
-                    <div class="radio-group">
-                        <label>Seleccione el tipo de membresía que desea:</label>
-                        
-                        <div class="radio-option">
-                            <input type="radio" id="membershipIndividual" name="membershipType" value="individual" required>
-                            <label for="membershipIndividual">Individual (acceso a todas las instalaciones)</label>
-                        </div>
-                        
-                        <div class="radio-option">
-                            <input type="radio" id="membershipFamily" name="membershipType" value="family">
-                            <label for="membershipFamily">Familiar (hasta 4 miembros)</label>
-                        </div>
-                        
-                        <div class="radio-option">
-                            <input type="radio" id="membershipCorporate" name="membershipType" value="corporate">
-                            <label for="membershipCorporate">Corporativa</label>
-                        </div>
-                        
-                        <div class="radio-option">
-                            <input type="radio" id="membershipVIP" name="membershipType" value="vip">
-                            <label for="membershipVIP">VIP (acceso prioritario a eventos)</label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="membershipDuration" class="required-label">Duración de la Membresía</label>
-                        <select id="membershipDuration" name="membershipDuration" required>
-                            <option value="">Seleccione una opción</option>
-                            <option value="3">3 meses</option>
-                            <option value="6">6 meses</option>
-                            <option value="12">1 año</option>
-                            <option value="24">2 años</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <!-- Sección de Intereses -->
-                <div class="form-section">
-                    <h2 class="section-title">Intereses</h2>
-                    
-                    <div class="form-group">
-                        <label>¿Qué actividades le interesan? (Seleccione todas las que apliquen)</label>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="interestSoccer" name="interests" value="soccer">
-                            <label for="interestSoccer">Fútbol</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="interestSwimming" name="interests" value="swimming">
-                            <label for="interestSwimming">Natación</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="interestGym" name="interests" value="gym">
-                            <label for="interestGym">Gimnasio</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="interestTennis" name="interests" value="tennis">
-                            <label for="interestTennis">Tenis</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="interestGolf" name="interests" value="golf">
-                            <label for="interestGolf">Golf</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="interestYoga" name="interests" value="yoga">
-                            <label for="interestYoga">Yoga</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="interestSpa" name="interests" value="spa">
-                            <label for="interestSpa">Spa y relajación</label>
-                        </div>
-                        
-                        <div class
+<!-- Contenedor del botón -->
+<div class="button-group">
+    <button type="submit" class="btn-primary">Enviar</button>
+</div>
