@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inscripción - Medellín Club</title>
+    <style>
+        /* Variables de colores */
+        :root {
+            --primary-red: #e61919;
+            --dark-red: #b30000;
+            --light-red: #ff4d4d;
+            --white: #ffffff;
+            --light-gray: #f2f2f2;
+            --dark-gray: #333333;
+        }
+
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        /* Cabecera */
+        .header {
+            background-color: var(--primary-red);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            border: 3px solid var(--white);
+            overflow: hidden;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        .header h1 {
+            color: var(--white);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: var(--white);
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Formulario */
+        .form-container {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary-red);
+            display: inline-block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark-gray);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 5px rgba(230, 25, 25, 0.3);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .required-label::after {
+            content: "*";
+            color: var(--primary-red);
+            margin-left: 4px;
+        }
+
+        .radio-group {
+            margin-bottom: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .radio-option input {
+            margin-right: 10px;
+        }
+
+        /* Botones */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-red);
+        }
+
+        .btn-secondary {
+            background-color: #ddd;
+            color: var(--dark-gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #ccc;
+        }
+
+        /* Pie de página */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+
+        /* Detalles adicionales */
+        .helper-text {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            color: var(--primary-red);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .has-error input,
+        .has-error select {
+            border-color: var(--primary-red);
+        }
+
+        .has-error .error-message {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <span class="logo-text">MC</span>
+            </div>
+            <h1>MEDELLÍN CLUB</h1>
+            <p>Formulario de Inscripción para Membresía</p>
+        </div>
+
+        <div class="form-container">
+            <form id="medellinClubForm">
+                <!-- Sección de Información Personal -->
+                <div class="form-section">
+                    <h2 class="section-title">Información Personal</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="required-label">Nombres</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName" class="required-label">Apellidos</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="idType" class="required-label">Tipo de Documento</label>
+                            <select id="idType" name="idType" required>
+                                <option value="">Seleccione una opción</option>
+                                <option value="cc">Cédula de Ciudadanía</option>
+                                <option value="ce">Cédula de Extranjería</option>
+                                <option value="passport">Pasaporte</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="idNumber" class="required-label">Número de Documento</label>
+                            <input type="text" id="idNumber" name="idNumber" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate" class="required-label">Fecha de Nacimiento</label>
+                            <input type="date" id="birthDate" name="birthDate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gender" class="required-label">Género</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Seleccione una opción</option>
+                                <option value="male">Masculino</option>
+                                <option value="female">Femenino</option>
+                                <option value="other">Otro</option>
+                                <option value="prefer-not-to-say">Prefiero no decir</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sección de Contacto -->
+                <div class="form-section">
+                    <h2 class="section-title">Información de Contacto</h2>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required-label">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone" class="required-label">Teléfono Móvil</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="altPhone">Teléfono Alternativo</label>
+                            <input type="tel" id="altPhone" name="altPhone">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address" class="required-label">Dirección</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city" class="required-label">Ciudad</label>
+                            <input type="text" id="city" name="city" value="Medellín" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="neighborhood">Barrio</label>
+                            <input type="text" id="neighborhood" name="neighborhood">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sección de Membresía -->
+                <div class="form-section">
+                    <h2 class="section-title">Tipo de Membresía</h2>
+                    
+                    <div class="radio-group">
+                        <label>Seleccione el tipo de membresía que desea:</label>
+                        
+                        <div class="radio-option">
+                            <input type="radio" id="membershipIndividual" name="membershipType" value="individual" required>
+                            <label for="membershipIndividual">Individual (acceso a todas las instalaciones)</label>
+                        </div>
+                        
+                        <div class="radio-option">
+                            <input type="radio" id="membershipFamily" name="membershipType" value="family">
+                            <label for="membershipFamily">Familiar (hasta 4 miembros)</label>
+                        </div>
+                        
+                        <div class="radio-option">
+                            <input type="radio" id="membershipCorporate" name="membershipType" value="corporate">
+                            <label for="membershipCorporate">Corporativa</label>
+                        </div>
+                        
+                        <div class="radio-option">
+                            <input type="radio" id="membershipVIP" name="membershipType" value="vip">
+                            <label for="membershipVIP">VIP (acceso prioritario a eventos)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="membershipDuration" class="required-label">Duración de la Membresía</label>
+                        <select id="membershipDuration" name="membershipDuration" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="3">3 meses</option>
+                            <option value="6">6 meses</option>
+                            <option value="12">1 año</option>
+                            <option value="24">2 años</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Sección de Intereses -->
+                <div class="form-section">
+                    <h2 class="section-title">Intereses</h2>
+                    
+                    <div class="form-group">
+                        <label>¿Qué actividades le interesan? (Seleccione todas las que apliquen)</label>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="interestSoccer" name="interests" value="soccer">
+                            <label for="interestSoccer">Fútbol</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="interestSwimming" name="interests" value="swimming">
+                            <label for="interestSwimming">Natación</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="interestGym" name="interests" value="gym">
+                            <label for="interestGym">Gimnasio</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="interestTennis" name="interests" value="tennis">
+                            <label for="interestTennis">Tenis</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="interestGolf" name="interests" value="golf">
+                            <label for="interestGolf">Golf</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="interestYoga" name="interests" value="yoga">
+                            <label for="interestYoga">Yoga</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="interestSpa" name="interests" value="spa">
+                            <label for="interestSpa">Spa y relajación</label>
+                        </div>
+                        
+                        <div class
